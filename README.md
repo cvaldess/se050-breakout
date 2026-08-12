@@ -88,9 +88,13 @@ solder will wick down them during reflow.
 
 Everything the board house needs is in [`gerber/`](gerber/), unzipped:
 
-- Gerbers for both copper layers, both solder masks, both silkscreens and the board outline
+- Gerbers for both copper layers, both solder masks, the top silkscreen and the board outline
 - **Paste layers for both sides** (`.gtp` / `.gbp`), for ordering a stencil
 - Excellon drill files, plated and non-plated separately, plus drill maps
+
+There is **no bottom silkscreen** — the layer is empty and is not exported, which keeps the board on
+the cheaper single-sided legend option. The practical consequence is that **JP1 is not labelled on
+the board**: it is the two-pad solder jumper on the underside, next to the header end.
 
 Two-layer board, 1.6 mm, no controlled impedance, nothing exotic. Copper pours are filled in the
 exported gerbers.

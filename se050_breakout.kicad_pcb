@@ -3478,7 +3478,7 @@
 		(descr "SMD Solder Jumper, 1x1.5mm, rounded Pads, 0.3mm gap, open")
 		(tags "solder jumper open")
 		(property "Reference" "JP1"
-			(at 0 1.8 0)
+			(at 0 1.8 180)
 			(layer "B.SilkS")
 			(hide yes)
 			(uuid "f8570373-e32a-4156-b693-1fc6e181383e")
@@ -3491,7 +3491,7 @@
 			)
 		)
 		(property "Value" "ENA"
-			(at 0.06 1.69 0)
+			(at 0.06 1.69 180)
 			(layer "B.Fab")
 			(uuid "bb7ae3ca-6ba5-4660-b194-abbd798b160b")
 			(effects
@@ -3534,12 +3534,6 @@
 		(path "/05f82812-b0df-4e76-a1da-a9acaeb3606e")
 		(sheetname "/")
 		(sheetfile "se050_breakout.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(zone_connect 1)
 		(attr exclude_from_bom allow_soldermask_bridges)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -3553,90 +3547,6 @@
 			(fill yes)
 			(layer "B.Mask")
 			(uuid "dfe9aeb6-9351-451b-a569-4f59993e49af")
-		)
-		(fp_line
-			(start -1.4 -0.3)
-			(end -1.4 0.3)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "a7e8977a-1ed7-446d-835f-261d4d068b4b")
-		)
-		(fp_line
-			(start -0.7 1)
-			(end 0.7 1)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "3b09c138-d970-439d-b789-5cbebde72052")
-		)
-		(fp_line
-			(start 0.7 -1)
-			(end -0.7 -1)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "d9959823-9cde-4a83-9465-0c8c521fde6f")
-		)
-		(fp_line
-			(start 1.4 0.3)
-			(end 1.4 -0.3)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "115af0f3-50dc-48d5-a192-27b052c6f10f")
-		)
-		(fp_arc
-			(start -1.4 -0.3)
-			(mid -1.194975 -0.794975)
-			(end -0.7 -1)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "fc967c0f-b8f4-4758-954b-e39c9c1dcd85")
-		)
-		(fp_arc
-			(start -0.7 1)
-			(mid -1.194975 0.794975)
-			(end -1.4 0.3)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "ffeeb11b-4943-4919-adb2-c377e8a95d8d")
-		)
-		(fp_arc
-			(start 0.7 -1)
-			(mid 1.194975 -0.794975)
-			(end 1.4 -0.3)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "7a66a2e1-a258-474d-b7ee-0305556316b7")
-		)
-		(fp_arc
-			(start 1.4 0.3)
-			(mid 1.194975 0.794975)
-			(end 0.7 1)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "4056c1d5-990e-49fb-b74b-5c80835dcfce")
 		)
 		(fp_line
 			(start -1.65 1.25)
