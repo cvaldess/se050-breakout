@@ -13,13 +13,27 @@ in this repository, so it opens on any machine without installing extra librarie
 | 1 | +3.3V | supply, feeds VIN (pin 12) |
 | 2 | SDA | I²C data, 4.7 kΩ pull-up on board |
 | 3 | SCL | I²C clock, 4.7 kΩ pull-up on board |
-| 4 | ENA | enable — **drive high to use the chip** |
+| 4 | ENA | enable — **drive high to use the chip**, or close JP1 (see below) |
 | 5 | GND | |
 
-**ENA is not optional.** R3 pulls it to ground, so the SE050 powers up in deep power-down and will
-not answer on I²C until the host drives ENA high. That is deliberate: it gives the host a hard
-power switch over the secure element, and deep power-down draws under 5 µA. If you want the chip
-always on instead, tie pin 4 to pin 1 on your carrier.
+**ENA is not optional — this is the first thing to get wrong.** R3 pulls it to ground, so the SE050
+powers up in deep power-down and will **not answer on I²C** until ENA goes high. If your scan of the
+bus finds nothing at 0x48, this is almost certainly why.
+
+You have two ways to handle it:
+
+- **Drive ENA from a GPIO** (pin 4 of the header). This is the reason the pin is broken out: it
+  gives the host a hard power switch over the secure element, and deep power-down draws under 5 µA.
+- **Close JP1** if you have no pin to spare. It is a solder jumper on the **bottom side** that ties
+  ENA to 3V3, and it ships **open** — bridge the two pads with solder and the chip is permanently
+  enabled. Leave pin 4 of the header unconnected in that case.
+
+Closing JP1 costs you only the deep power-down mode, which is the one mode controlled by that pad.
+Software power-down (~430–480 µA, with state retention, woken by a falling edge on SDA) still works
+either way. It also leaves R3 as a permanent 100 kΩ load across the rail, about 33 µA.
+
+Note that firmware commonly ignores this pin — the Meshtastic SE050 driver, for one, never touches
+it — so if you are dropping this board under existing software, JP1 is probably what you want.
 
 The I²C target address of the SE050 is **0x48**.
 
@@ -34,6 +48,7 @@ The I²C target address of the SE050 is **0x48**.
 | R1, R2 | 4.7 kΩ | 0402 | I²C pull-ups to 3V3 |
 | R3 | 100 kΩ | 0402 | ENA pull-down |
 | J1 | 1×5 header | 2 mm pitch | breakout header |
+| JP1 | — | solder jumper, bottom side | ties ENA to 3V3; **ships open** |
 | H1 | — | M2 | mounting hole, tied to GND |
 
 ## Design notes

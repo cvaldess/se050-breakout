@@ -5,6 +5,10 @@
 _autosave-*
 *-backups/
 
+# Check reports, regenerated on demand
+*-drc.rpt
+*-erc.rpt
+
 # Local editor / cache state (machine-specific, not part of the design)
 *.kicad_prl
 fp-info-cache
