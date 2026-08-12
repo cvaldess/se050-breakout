@@ -60,8 +60,15 @@ Worth reading before you reuse this in your own layout — most of it comes stra
 as a smart card, but that interface is *not enabled* in generic SE050 configurations — NXP enables
 it only on customer request (see AN12436, which does not list it for any stock part number). On the
 E2 those pads are inert, and the data sheet's own recommendation for pins 3 (IO1), 13 (CLK) and
-16 (IO2) is *"n.c. (recommended)"*. Pin 14 (RST_N) is the exception: for that one the data sheet
-says *"if not used then connect to VCC or VSS"*, with no floating option, so it is tied here.
+16 (IO2) is *"n.c. (recommended)"*.
+
+**Pin 14 (RST_N) is the exception, and it goes to ground here.** For that pad the data sheet offers
+no floating option — *"if not used then connect to VCC or VSS"* — and of the two, VSS is the one
+that holds up in every state of this board. RST_N is referenced to VCC, and VCC is fed from VOUT
+through an internal switch that opens in deep power-down: with ENA low, VCC drops to 0 V while VIN
+stays up, so a pin tied to the 3V3 rail would sit above its own reference. Ground sidesteps that,
+and it cannot hold the part in reset because RST_N is only active when the ISO7816 interface is
+enabled, which it is not on the E2.
 
 Note that IO1 and IO2 double as the **I²C controller** pins (SDA and SCL respectively) — the SE050
 acting as a bus master to talk directly to a sensor and sign its readings. The E2 supports that at
