@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+
+  (lib (name "SE050E2HQ1") (type "KiCad") (uri "${KIPRJMOD}/SE050E2HQ1.pretty") (options "") (descr ""))
+)

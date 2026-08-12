@@ -1,0 +1,18 @@
+# KiCad backups and autosaves
+*.bak_*
+*.kicad_pcb-bak
+*.kicad_sch-bak
+_autosave-*
+*-backups/
+
+# Local editor / cache state (machine-specific, not part of the design)
+*.kicad_prl
+fp-info-cache
+.history/
+
+# Exported artefacts that are regenerated from the board
+# (gerber/ is committed on purpose so people can order without opening KiCad)
+*.zip
+*.step
+*.stp
+!SE050E2HQ1.pretty/*.stp
