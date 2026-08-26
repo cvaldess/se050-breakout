@@ -20,3 +20,18 @@ fp-info-cache
 *.step
 *.stp
 !SE050E2HQ1.pretty/*.stp
+
+# Panelisation and assembly outputs. Anyone who wants to fabricate this board
+# has everything they need in the project files and gerber/; the panel is our
+# own production run and is not part of what is published here.
+panelize.py
+se050_breakout_panel.*
+gerber_panel/
+assembly/
+
+# Local bench notes
+experimento-c17.txt
+
+# KiCad lock files and library backups
+~*.lck
+*.bak

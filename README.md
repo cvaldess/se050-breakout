@@ -1,7 +1,7 @@
 # SE050 Breakout
 
 A minimal breakout board for the **NXP EdgeLock SE050E2HQ1** secure element, bringing the I²C
-interface out to a 5-pin 2 mm header. 16.33 × 12.72 mm, two layers, all passives 0402.
+interface out to a 5-pin 2 mm header. 16.42 × 14.56 mm, two layers, all passives 0402.
 
 Designed in KiCad 10. The project is self-contained: the SE050 symbol, footprint and 3D model live
 in this repository, so it opens on any machine without installing extra libraries.
@@ -39,17 +39,28 @@ The I²C target address of the SE050 is **0x48**.
 
 ## Bill of materials
 
-| Ref | Value | Footprint | Purpose |
-|-----|-------|-----------|---------|
-| SE050 | SE050E2HQ1 | HX2QFN20 3×3 mm | secure element |
-| C1 | 100 nF | 0402 | VIN decoupling |
-| C2 | 33 nF | 0402 | VCC/VOUT decoupling |
-| C3 | 33 nF | 0402 | ENA filtering |
-| R1, R2 | 4.7 kΩ | 0402 | I²C pull-ups to 3V3 |
-| R3 | 100 kΩ | 0402 | ENA pull-down |
-| J1 | 1×5 header | 2 mm pitch | breakout header |
-| JP1 | — | solder jumper, bottom side | ties ENA to 3V3; **ships open** |
-| H1 | — | M2 | mounting hole, tied to GND |
+| Ref | Value | Footprint | LCSC | Purpose |
+|-----|-------|-----------|------|---------|
+| SE050 | SE050E2HQ1/Z01Z3Z | HX2QFN20 3×3 mm | C5190917 | secure element |
+| C1 | 100 nF | 0402 | C1525 | VIN decoupling |
+| C2 | 33 nF | 0402 | C106862 | ENA filtering |
+| R1, R2 | 4.7 kΩ | 0402 | C105871 | I²C pull-ups to 3V3 |
+| R3 | 100 kΩ | 0402 | C60491 | ENA pull-down |
+| J1 | 1×5 header | 2 mm pitch | — | breakout header |
+| JP1 | — | solder jumper, bottom side | — | ties ENA to 3V3; **ships open** |
+| H1 | — | M2 | — | mounting hole, tied to GND |
+| FID1, FID2 | — | 1 mm fiducial | — | optical alignment for automated assembly |
+
+Only the five parts with an LCSC number are fitted by machine; J1, JP1 and H1 are hand work or
+nothing at all.
+
+**There is deliberately no capacitor between VOUT (pin 15) and VCC (pin 18).** Application note
+AN13483 §8.2.2 asks for that node to be left undecoupled on an I²C part that uses deep power-down,
+and this board follows it. Two builds were made to test the point — one with a 33 nF there and one
+without — and they were indistinguishable across every measurement available without an
+oscilloscope: identical enable/disable timing, identical 1 µA deep power-down current, and the same
+result on every functional test. The note is obeyed because obeying it costs nothing, not because a
+failure was reproduced.
 
 ## Design notes
 
@@ -80,9 +91,15 @@ sheet requires for deep power-down to work. In deep power-down VOUT and VCC are 
 entirely and only the I²C pads stay supplied from VIN.
 
 **The exposed pad is ground.** It is stitched to the ground plane with five 0.6 mm vias (0.3 mm
-drill) — four at the corners and one in the centre — leaving 0.185 mm of clearance to the edge of
-the 1.95 × 1.95 mm pad. If you have the stencil made, check that your fab tents the via barrels, or
+drill) — four at the corners and one in the centre — leaving 0.175 mm of clearance at the tightest
+to the edge of the 1.95 × 1.95 mm pad. If you have the stencil made, check that your fab tents the via barrels, or
 solder will wick down them during reflow.
+
+**Two fiducials, diagonally opposite, for machine assembly.** Each is a 1 mm copper dot in a 2 mm
+solder mask opening, with a 3 mm keepout drawn as a rule area on the top copper so the ground pour
+backs away and leaves the camera a clean target. If you hand-solder this board they are simply two
+bare copper dots and you can ignore them. Note that the keepout is a top-layer rule: the bottom pour
+runs straight under the fiducials, which is fine, because the camera cannot see through the board.
 
 ## Fabrication
 
@@ -99,10 +116,15 @@ the board**: it is the two-pad solder jumper on the underside, next to the heade
 Two-layer board, 1.6 mm, no controlled impedance, nothing exotic. Copper pours are filled in the
 exported gerbers.
 
-> **This PCB has not been fabricated yet.** The circuit itself is in use — the same SE050 wiring
-> runs on a carrier board used with Meshtastic firmware and a voice-crypto prototype — but this
-> particular layout has not come back from a board house, so treat the first order as a prototype
-> run and check it before committing to a batch.
+> **Fabrication status, precisely.** An earlier revision of this layout — same schematic, same
+> stack-up, 16.33 × 12.72 mm and without the fiducials — was manufactured, assembled by hand and
+> validated on hardware: the SE050 answers on 0x48, a full SCP03 session opens, keys are generated
+> and survive a power cycle, deep power-down measures 1 µA, and 30 consecutive enable/disable cycles
+> ran without a fault. The solder jumper JP1 was exercised too.
+>
+> **The revision in this repository has not itself been fabricated.** It differs by the two
+> fiducials, their keepouts and a slightly larger outline; nothing in the circuit changed. Treat a
+> first order as a prototype run and check it before committing to a batch.
 
 ## License
 
