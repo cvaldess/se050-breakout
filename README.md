@@ -110,8 +110,7 @@ Everything the board house needs is in [`gerber/`](gerber/), unzipped:
 - Excellon drill files, plated and non-plated separately, plus drill maps
 
 There is **no bottom silkscreen** — the layer is empty and is not exported, which keeps the board on
-the cheaper single-sided legend option. The practical consequence is that **JP1 is not labelled on
-the board**: it is the two-pad solder jumper on the underside, next to the header end.
+the cheaper single-sided legend option.
 
 Two-layer board, 1.6 mm, no controlled impedance, nothing exotic. Copper pours are filled in the
 exported gerbers.
