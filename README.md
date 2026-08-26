@@ -24,9 +24,9 @@ You have two ways to handle it:
 
 - **Drive ENA from a GPIO** (pin 4 of the header). This is the reason the pin is broken out: it
   gives the host a hard power switch over the secure element, and deep power-down draws under 5 µA.
-- **Close JP1** if you have no pin to spare. It is a solder jumper on the **bottom side** that ties
-  ENA to 3V3, and it ships **open** — bridge the two pads with solder and the chip is permanently
-  enabled. Leave pin 4 of the header unconnected in that case.
+- **Close JP1** if you have no pin to spare. It is a solder jumper on the **top side**, labelled on
+  the silkscreen, and it ships **open** — bridge the two pads with solder and the chip is
+  permanently enabled. Leave pin 4 of the header unconnected in that case.
 
 Closing JP1 costs you only the deep power-down mode, which is the one mode controlled by that pad.
 Software power-down (~430–480 µA, with state retention, woken by a falling edge on SDA) still works
@@ -47,7 +47,7 @@ The I²C target address of the SE050 is **0x48**.
 | R1, R2 | 4.7 kΩ | 0402 | C105871 | I²C pull-ups to 3V3 |
 | R3 | 100 kΩ | 0402 | C60491 | ENA pull-down |
 | J1 | 1×5 header | 2 mm pitch | — | breakout header |
-| JP1 | — | solder jumper, bottom side | — | ties ENA to 3V3; **ships open** |
+| JP1 | — | solder jumper, top side | — | ties ENA to 3V3; **ships open** |
 | H1 | — | M2 | — | mounting hole, tied to GND |
 | FID1, FID2 | — | 1 mm fiducial | — | optical alignment for automated assembly |
 
