@@ -1,5 +1,7 @@
 # SE050 Breakout
 
+![3D PCB Layout](se050_breakout.png)
+
 A minimal breakout board for the **NXP EdgeLock SE050E2HQ1** secure element, bringing the I²C
 interface out to a 5-pin 2 mm header. 16.42 × 14.56 mm, two layers, all passives 0402.
 
