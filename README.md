@@ -8,6 +8,18 @@ interface out to a 5-pin 2 mm header. 16.42 × 14.56 mm, two layers, all passive
 Designed in KiCad 10. The project is self-contained: the SE050 symbol, footprint and 3D model live
 in this repository, so it opens on any machine without installing extra libraries.
 
+## Where to buy
+
+The whole design is here — schematic, layout, gerbers, symbol and footprint — and it is meant to be
+built. If you would rather not reflow a 3 × 3 mm QFN with a ground pad under it, assembled boards
+are available:
+
+**[Buy an assembled breakout →](https://meshtastic.cvaldess.com/se050)** — €15. Ships from Spain to
+the EU.
+
+Nothing is held back for the sale: send [`gerber/`](gerber/) to any board house and you get the same
+board. Read the fabrication status note below before ordering either way.
+
 ## Pinout (J1, 1×5, 2 mm pitch)
 
 | Pin | Net | Notes |
