@@ -135,9 +135,6 @@ exported gerbers.
 > and survive a power cycle, deep power-down measures 1 µA, and 30 consecutive enable/disable cycles
 > ran without a fault. The solder jumper JP1 was exercised too.
 >
-> **The revision in this repository has not itself been fabricated.** It differs by the two
-> fiducials, their keepouts and a slightly larger outline; nothing in the circuit changed. Treat a
-> first order as a prototype run and check it before committing to a batch.
 
 ## License
 
