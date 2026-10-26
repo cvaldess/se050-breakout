@@ -14,6 +14,10 @@ The whole design is here — schematic, layout, gerbers, symbol and footprint �
 built. If you would rather not reflow a 3 × 3 mm QFN with a ground pad under it, assembled boards
 are available:
 
+<a href="https://www.pcbway.com/project/shareproject/NXP_SE050_Secure_Element_Breakout_Board_96fa2869.html"><img src="https://www.pcbway.com/project/img/images/frompcbway-1220.png" alt="PCB from PCBWay" /></a>
+
+also
+
 **[Buy an assembled breakout →](https://meshtastic.cvaldess.com/se050)** — €15. Ships from Spain to
 the EU.
 
